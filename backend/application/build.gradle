@@ -1,0 +1,26 @@
+plugins {
+    // Apply the java-library plugin for API and implementation separation.
+    id 'application'
+	id 'org.graalvm.buildtools.native' version '0.9.28'
+}
+
+apply plugin: 'application'
+apply plugin: 'org.graalvm.buildtools.native'
+apply plugin: 'org.springframework.boot'
+
+springBoot {
+    mainClass = 'com.silo.backend.application.Application'
+}
+
+dependencies {
+    implementation project(":service")
+
+    implementation "org.springframework.boot:spring-boot-starter-web:${springbootStarterVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+     
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
+
+bootJar {
+    mainClass = 'com.silo.backend.application.Application'
+}

@@ -1,0 +1,25 @@
+plugins {
+    // Apply the java-library plugin for API and implementation separation.
+    id 'java-library'
+}
+
+apply plugin: 'java-library'
+
+dependencies {
+    implementation project(":database")
+    implementation project(":infrastructure")
+    implementation project(":utils")
+
+    implementation "org.springframework.boot:spring-boot-starter:${springbootStarterVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springbootStarterVersion}"
+    //implementation "org.springframework.data:spring-data-rest-hal-explorer:${springbootStarterVersion}"    
+    implementation "org.jooq:jooq:${jooqVersion}"
+    
+    compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.15.3'
+    //compileOnly 'com.fasterxml.jackson.core:jackson-core:2.15.3'
+    compileOnly 'com.fasterxml.jackson.core:jackson-annotations:2.15.3'
+    compileOnly 'org.immutables:value:2.9.3'
+
+    //annotationProcessor 'com.fasterxml.jackson.core:jackson-annotations:2.15.3'
+    annotationProcessor 'org.immutables:value:2.9.3'
+}
