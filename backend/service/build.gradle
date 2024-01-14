@@ -10,7 +10,13 @@ dependencies {
     implementation project(":infrastructure")
     implementation project(":utils")
 
-    implementation "org.springframework.boot:spring-boot-starter:${springbootStarterVersion}"
+    //implementation "org.springframework.boot:spring-boot-starter:${springbootStarterVersion}"
+    //implementation "org.springframework.boot:spring-boot-starter"
     implementation 'org.slf4j:slf4j-api:2.0.7'
-    implementation 'org.mindrot.bcrypt:bcrypt:0.3'
+    implementation 'de.svenkubiak:jBCrypt:0.4.3'
+
+    compileOnly 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    compileOnly "org.springframework.boot:spring-boot-starter-data-jpa:${springbootStarterVersion}"
+    
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 }

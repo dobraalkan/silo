@@ -32,7 +32,7 @@ subprojects {
 	ext {
 		set('springCloudVersion', "2023.0.0")
 		set('jooqVersion', "3.19.1")
-		set('springbootStarterVersion', "3.1.6")
+		set('springbootStarterVersion', "3.2.0")
 		set('testContainerVersion', "1.17.6")
 		set('jUnitVersion', "5.9.2")
 		set('jUnitPlatformVersion', "1.9.2")

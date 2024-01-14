@@ -1,17 +1,19 @@
 plugins {
     id 'java-library'
     id 'org.liquibase.gradle' version '2.2.0'
-    id "org.jooq.jooq-codegen-gradle" version "3.19.1"
+    //id "org.jooq.jooq-codegen-gradle" version "3.19.1"
 }
 
 apply plugin: 'java-library'
 apply plugin: 'org.liquibase.gradle'
-apply plugin: 'org.jooq.jooq-codegen-gradle'
+//apply plugin: 'org.jooq.jooq-codegen-gradle'
 
 dependencies {
-    implementation "org.jooq:jooq:${jooqVersion}"
-    implementation "org.springframework.boot:spring-boot-starter-web:${springbootStarterVersion}"
-    implementation "org.springframework.boot:spring-boot-starter-jooq:${springbootStarterVersion}"
+    //implementation "org.jooq:jooq:${jooqVersion}"
+    //implementation "org.springframework.boot:spring-boot-starter-web:${springbootStarterVersion}"
+    //implementation "org.springframework.boot:spring-boot-starter-jooq:${springbootStarterVersion}"
+	//implementation "org.springframework.boot:spring-boot-starter-web"
+    //implementation "org.springframework.boot:spring-boot-starter-jooq"
     
     implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
     implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
@@ -19,10 +21,10 @@ dependencies {
     implementation 'jakarta.transaction:jakarta.transaction-api:2.0.1'
 
  	// jooq-codegen dependencies
-    jooqCodegen 'org.jooq:jooq-meta-extensions:3.19.1'
-    jooqCodegen 'org.jooq:jooq-meta-extensions-liquibase:3.19.1'
-    jooqCodegen 'org.liquibase:liquibase-core:4.24.0'
-    jooqCodegen 'org.slf4j:slf4j-jdk14:1.7.30'  
+    //jooqCodegen 'org.jooq:jooq-meta-extensions:3.19.1'
+    //jooqCodegen 'org.jooq:jooq-meta-extensions-liquibase:3.19.1'
+    //jooqCodegen 'org.liquibase:liquibase-core:4.24.0'
+    //jooqCodegen 'org.slf4j:slf4j-jdk14:1.7.30'  
 
     // Liquidbase dependencies
     liquibaseRuntime 'org.liquibase:liquibase-core:4.24.0'
@@ -45,7 +47,7 @@ liquibase {
     //runList = 'main'
 }
 
-jooq {
+/*jooq {
     //jvmArgs "-Duser.dir=$project.projectDir/src/main/resources/liquibase"
     configuration {
         generator {
@@ -99,7 +101,7 @@ jooq {
       			// - ORG_JOOQ_GENERATED
       			generatedAnnotationDate = true
       			generatedAnnotationType = "DETECT_FROM_JDK"
-      			//generatedAnnotationJooqVersion = true
+      			// generatedAnnotationJooqVersion = true
       			nullableAnnotation = true
       			nullableAnnotationType = "jakarta.annotation.Nullable"
       			nonnullAnnotation = true
@@ -114,10 +116,10 @@ jooq {
       			// for auto-wiring the Configuration instance, e.g. from Spring Boot's jOOQ starter
       			springAnnotations = true
       			springDao = true
-      			//kotlinSetterJvmNameAnnotationsOnIsPrefix = true
+      			// kotlinSetterJvmNameAnnotationsOnIsPrefix = true
       			constructorPropertiesAnnotation = true
-      			constructorPropertiesAnnotationOnPojos = true
-      			constructorPropertiesAnnotationOnRecords = true  		
+      			// constructorPropertiesAnnotationOnPojos = true
+      			// constructorPropertiesAnnotationOnRecords = true  		
                 
                 // By default, jOOQ generated artefacts follow JavaBeans conventions, where setters return void. 
                 // If that is not a hard requirement, fluent setters can be generated where the setter returns the 
@@ -165,7 +167,7 @@ jooq {
 				// POJOs
 				// Generate the DAO classes
 				// POJOs are a pre-requisite for DAOs. If DAOs are generated, POJOs are generated as well
-				daos = true
+				// daos = true
 
 				// Immutable POJOs have final members and no setters. All members must be passed to the constructor
 				immutablePojos true
@@ -180,10 +182,10 @@ jooq {
 				pojosEqualsAndHashCode = true
 
 				// Turn on the generation of interfaces
-      			interfaces = true
+      			// interfaces = true
 
       			// Generated interfaces will not expose mutable components of their implementations, such as setters
-      			immutableInterfaces = true
+      			// immutableInterfaces = true
 
       			// Whether generated interfaces are Serializable
       			serializableInterfaces = true
@@ -198,7 +200,7 @@ jooq {
             }
         }
     }
-}
+}*/
 
 task('deployChangeLog') {
     doFirst() {

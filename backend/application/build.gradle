@@ -14,9 +14,17 @@ springBoot {
 
 dependencies {
     implementation project(":service")
-
-    implementation "org.springframework.boot:spring-boot-starter-web:${springbootStarterVersion}"
+    implementation project(":domain")
+    
+    //implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    
+   	runtimeOnly 'org.postgresql:postgresql'
+    
+    compileOnly 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
      
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }

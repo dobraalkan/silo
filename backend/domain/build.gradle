@@ -10,10 +10,14 @@ dependencies {
     implementation project(":infrastructure")
     implementation project(":utils")
 
-    implementation "org.springframework.boot:spring-boot-starter:${springbootStarterVersion}"
-    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springbootStarterVersion}"
+    //implementation "org.springframework.boot:spring-boot-starter:${springbootStarterVersion}"
+    compileOnly "org.springframework.boot:spring-boot-starter-data-jpa:${springbootStarterVersion}"
+    //implementation "org.springframework.boot:spring-boot-starter"
+    //implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     //implementation "org.springframework.data:spring-data-rest-hal-explorer:${springbootStarterVersion}"    
-    implementation "org.jooq:jooq:${jooqVersion}"
+    //implementation "org.jooq:jooq:${jooqVersion}"
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    //implementation 'org.javatuples:javatuples:1.2'
     
     compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.15.3'
     //compileOnly 'com.fasterxml.jackson.core:jackson-core:2.15.3'

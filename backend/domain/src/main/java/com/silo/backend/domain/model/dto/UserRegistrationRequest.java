@@ -12,6 +12,5 @@ public abstract class UserRegistrationRequest {
 
     public abstract String userName();
     public abstract String password();
-
-
+    
 }

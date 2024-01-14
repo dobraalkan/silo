@@ -1,0 +1,89 @@
+## --------------------------------------------------
+#if ( $entity.isJoinEntity() )
+#cancel("No Service class for join entity")
+#end
+package ${ROOT_PKG}.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ${ROOT_PKG}.domain.repository.${entity.name}Repository;
+import ${ROOT_PKG}.domain.model.entity.${entity.name};
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+
+
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * Service Implementation for managing {@link ${entity.name}}.
+ * @author
+ */
+@Service
+@Transactional
+public class ${entity.name}Service {
+
+    private ${entity.name}Repository repository;
+
+    public ${entity.name}Service(${entity.name}Repository repository) {
+         this.repository = repository;
+    }
+
+    public ${entity.name} findById(${entity.keyAttributes[0].formattedType(0)} id) {
+        try {
+            return repository.findById(id).orElse(null);
+
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
+    public List<${entity.name}> findAll() {
+        try {
+            return repository.findAll();
+
+        } catch (Exception ex) {
+            return Collections.emptyList();
+        }
+    }
+
+    public ${entity.name} create(${entity.name} d) {
+        try {
+            return repository.save(d);
+
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
+    public ${entity.name} update(${entity.name} d) {
+        try {
+            return repository.saveAndFlush(d);
+
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
+    public long count() {
+        try {
+            return repository.count();
+        } catch (Exception ex) {
+            return 0;
+        }
+    }
+
+    public void delete(${entity.keyAttributes[0].formattedType(0)} id) {
+        repository.deleteById(id);
+    }
+
+	public Page<${entity.name}> findAllPaginate(Pageable pageable) {
+		return repository.findAll(pageable);
+	}
+
+	public Page<${entity.name}> findAllSpecification(Specification<${entity.name}> specs, Pageable pageable) {
+		return repository.findAll(specs, pageable);
+	}
+
+}

@@ -12,4 +12,5 @@ public abstract class LoginRequest {
 
     public abstract String userName();
     public abstract String password();
+    
 }
