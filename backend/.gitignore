@@ -18,6 +18,9 @@ gradle-app.setting
 *.ear
 *.class
 
+# visual studio specific git ignore
+.vscode
+
 # eclipse specific git ignore
 *.pydevproject
 .project
@@ -25,7 +28,6 @@ gradle-app.setting
 bin/**
 tmp/**
 tmp/**/*
-generated/
 *.tmp
 *.bak
 *.swp
@@ -46,6 +48,7 @@ local.properties
 
 # External tool builders
 .externalToolBuilders/
+generated/
 
 # Mac
 .DS_Store
