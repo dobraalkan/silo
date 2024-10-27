@@ -1,0 +1,42 @@
+networks:
+  dev-silo:
+
+services:
+  langflow:
+    build:
+      context: ..
+      dockerfile: docker/dev.Dockerfile
+    image: dev-silo
+    container_name: dev-silo
+    restart: always
+    ports:
+      - "7860:7860"
+      - "3000:3000"
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - LANGFLOW_DATABASE_URL=postgresql://siloUser:0P0lacam!@localhost:5432/siloDb
+      - LANGFLOW_SUPERUSER=admin
+      - LANGFLOW_SUPERUSER_PASSWORD=0P0lacam!
+      - LANGFLOW_CONFIG_DIR=/var/lib/silo
+    env_file:
+      - ../.env
+    volumes:
+      - ../:/app
+    depends_on:
+      - postgres # Dependência no seu banco de dados existente
+    networks:
+      -  dev-silo
+
+
+  postgres:
+    container_name: postgres
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: siloUser
+      POSTGRES_PASSWORD: 0P0lacam!
+      POSTGRES_DB: siloDb
+    ports:
+      - "5432:5432"
+    networks:
+      -  dev-silo
+

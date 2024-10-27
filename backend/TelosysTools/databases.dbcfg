@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<databases defaultId="1" maxId="10">
-    <db dialect="org.hibernate.dialect.PostgreSQLDialect" driver="org.postgresql.Driver" id="0" isolationLevel="" name="POSTGRESQL" poolSize="1" typeName="POSTGRESQL" url="jdbc:postgresql://localhost:5432/waltz">
-        <property name="user" value="waltz"/>
-        <property name="password" value="waltz"/>
-        <metadata catalog="" schema="public" table-name-exclude="" table-name-include="" table-name-pattern="%" table-types="TABLE"/>
-    </db>
-</databases>

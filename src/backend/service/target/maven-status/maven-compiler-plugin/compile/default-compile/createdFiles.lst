@@ -1,0 +1,8 @@
+com/silo/backend/service/ComponentService.class
+com/silo/backend/service/EmailingService.class
+com/silo/backend/service/AuthenticationService.class
+com/silo/backend/service/WorkspaceService.class
+com/silo/backend/service/CustomOAuth2UserService.class
+com/silo/backend/service/TokenService.class
+com/silo/backend/service/UserDetailService.class
+com/silo/backend/service/UserService.class

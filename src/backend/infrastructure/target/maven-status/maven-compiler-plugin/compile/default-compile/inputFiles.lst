@@ -1,0 +1,9 @@
+/Users/dobra/Documents/Projects/silo/src/backend/infrastructure/src/main/java/com/silo/backend/infrastructure/CrudService.java
+/Users/dobra/Documents/Projects/silo/src/backend/infrastructure/src/main/java/com/silo/backend/infrastructure/ErrorMessage.java
+/Users/dobra/Documents/Projects/silo/src/backend/infrastructure/src/main/java/com/silo/backend/infrastructure/exception/ApiRequestException.java
+/Users/dobra/Documents/Projects/silo/src/backend/infrastructure/src/main/java/com/silo/backend/infrastructure/exception/CaptchaException.java
+/Users/dobra/Documents/Projects/silo/src/backend/infrastructure/src/main/java/com/silo/backend/infrastructure/exception/EmailException.java
+/Users/dobra/Documents/Projects/silo/src/backend/infrastructure/src/main/java/com/silo/backend/infrastructure/exception/InputFieldException.java
+/Users/dobra/Documents/Projects/silo/src/backend/infrastructure/src/main/java/com/silo/backend/infrastructure/exception/JwtAuthenticationException.java
+/Users/dobra/Documents/Projects/silo/src/backend/infrastructure/src/main/java/com/silo/backend/infrastructure/exception/PasswordConfirmationException.java
+/Users/dobra/Documents/Projects/silo/src/backend/infrastructure/src/main/java/com/silo/backend/infrastructure/exception/PasswordException.java
