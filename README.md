@@ -50,6 +50,4 @@ Star Langflow on GitHub to be instantly notified of new releases.
 
 ---
 
-[![Star History Chart](https://api.star-history.com/svg?repos=langflow-ai/langflow&type=Timeline)](https://star-history.com/#langflow-ai/langflow&Date)
-
 ## ❤️ Contributors
