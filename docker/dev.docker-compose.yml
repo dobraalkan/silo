@@ -2,35 +2,48 @@ networks:
   dev-silo:
 
 services:
-  langflow:
+  silo-frontend:
     build:
-      context: ..
-      dockerfile: docker/dev.Dockerfile
-    image: dev-silo
-    container_name: dev-silo
-    restart: always
+      context: ../  # Path to your React application Dockerfile
+      dockerfile: docker/frontend/dev.Dockerfile
+      args:
+        - BACKEND_URL=http://backend:7860
+    depends_on:
+      - silo-backend
+    environment:
+      - VITE_PROXY_TARGET=http://backend:7860
+    ports:
+      - "8080:3000"  # Maps Nginx 80 to localhost 3000
+    volumes:
+      - ./src/frontend/public:/home/node/app/public
+      - ./src/frontend/src:/home/node/app/src
+      - ./src/frontend/package.json:/home/node/app/package.json
+    restart: on-failure
+    networks:
+      - dev-silo
+
+  silo-backend:
+    build:
+      context: ../  # Path to your Spring Boot application Dockerfile
+      dockerfile: docker/backend/dev.Dockerfile
     ports:
       - "7860:7860"
       - "3000:3000"
     environment:
-      - PYTHONDONTWRITEBYTECODE=1
-      - LANGFLOW_DATABASE_URL=postgresql://siloUser:0P0lacam!@localhost:5432/siloDb
-      - LANGFLOW_SUPERUSER=admin
-      - LANGFLOW_SUPERUSER_PASSWORD=0P0lacam!
-      - LANGFLOW_CONFIG_DIR=/var/lib/silo
-    env_file:
-      - ../.env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/siloDb
+      SPRING_DATASOURCE_USERNAME: siloUser
+      SPRING_DATASOURCE_PASSWORD: 0P0lacam!
+      # SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_PROFILES_ACTIVE: dev
     volumes:
       - ../:/app
     depends_on:
-      - postgres # Dependência no seu banco de dados existente
+      - postgres-database
     networks:
-      -  dev-silo
+      - dev-silo
 
-
-  postgres:
-    container_name: postgres
-    image: pgvector/pgvector:pg16
+  postgres-database:
+    image: postgres:17
     environment:
       POSTGRES_USER: siloUser
       POSTGRES_PASSWORD: 0P0lacam!
@@ -38,5 +51,9 @@ services:
     ports:
       - "5432:5432"
     networks:
-      -  dev-silo
+      - dev-silo
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
+volumes:
+  postgres_data:

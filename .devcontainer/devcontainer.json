@@ -1,0 +1,14 @@
+{
+    "name": "Silo Dev Container",
+    "dockerComposeFile": [
+        "../docker/dev.docker-compose.yaml"  // Ana dizindeki docker-compose.yaml dosyası
+    ],
+    "service": "frontend",  // Ana servis, frontend olarak ayarlanır
+    "workspaceFolder": "/silo",  // Çalışma dizini
+    "remoteUser": "node",  // Kullanıcı, baz görüntüsüne göre değiştirilebilir
+    "remoteEnv": {
+        "NODE_ENV": "development",  // Geliştirme ortamı değişkeni
+        "DATABASE_URL": "postgresql://siloDb:0P0lacam!@postgres:5432/siloDb" // PostgreSQL bağlantı dizesi
+    },
+    "overrideCommand": false  // Komutun geçersiz kılınmasını sağlar
+}

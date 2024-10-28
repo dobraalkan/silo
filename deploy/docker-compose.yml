@@ -84,7 +84,7 @@ services:
         - traefik.http.services.${STACK_NAME?Variable not set}-backend.loadbalancer.server.port=7860
 
   db:
-    image: postgres:15.4
+    image: postgres:16
     volumes:
       - app-db-data:/var/lib/postgresql/data/pgdata
     environment:

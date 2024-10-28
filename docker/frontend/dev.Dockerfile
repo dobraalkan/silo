@@ -1,5 +1,6 @@
 #baseline
 FROM node:21-bookworm-slim AS base
+
 RUN mkdir -p /home/node/app
 RUN chown -R node:node /home/node && chmod -R 770 /home/node
 RUN apt-get update && apt-get install -y jq
@@ -12,9 +13,9 @@ ENV BACKEND_URL $BACKEND_URL
 RUN echo "BACKEND_URL: $BACKEND_URL"
 
 WORKDIR /home/node/app
-COPY --chown=node:node . ./
+COPY --chown=node:node /src/frontend ./
 
-COPY ./set_proxy.sh .
+COPY /src/frontend/set_proxy.sh .
 RUN chmod +x set_proxy.sh && \
     cat set_proxy.sh | tr -d '\r' > set_proxy_unix.sh && \
     chmod +x set_proxy_unix.sh && \

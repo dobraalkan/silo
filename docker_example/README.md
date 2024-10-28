@@ -1,6 +1,6 @@
-# Running LangFlow with Docker
+# Running Silo with Docker
 
-This guide will help you get LangFlow up and running using Docker and Docker Compose.
+This guide will help you get Silo up and running using Docker and Docker Compose.
 
 ## Prerequisites
 
@@ -9,10 +9,10 @@ This guide will help you get LangFlow up and running using Docker and Docker Com
 
 ## Steps
 
-1. Clone the LangFlow repository:
+1. Clone the Silo repository:
 
    ```sh
-   git clone https://github.com/langflow-ai/langflow.git
+   git clone https://github.com/dobraalkan/silo.git
    ```
 
 2. Navigate to the `docker_example` directory:
@@ -27,24 +27,24 @@ This guide will help you get LangFlow up and running using Docker and Docker Com
    docker compose up
    ```
 
-LangFlow will now be accessible at [http://localhost:7860/](http://localhost:7860/).
+Silo will now be accessible at [http://localhost:7860/](http://localhost:7860/).
 
 ## Docker Compose Configuration
 
-The Docker Compose configuration spins up two services: `langflow` and `postgres`.
+The Docker Compose configuration spins up two services: `silo` and `postgres`.
 
-### LangFlow Service
+### Silo Service
 
-The `langflow` service uses the `langflowai/langflow:latest` Docker image and exposes port 7860. It depends on the `postgres` service.
+The `silo` service uses the `dobraalkan/silo:latest` Docker image and exposes port 7860. It depends on the `postgres` service.
 
 Environment variables:
 
-- `LANGFLOW_DATABASE_URL`: The connection string for the PostgreSQL database.
-- `LANGFLOW_CONFIG_DIR`: The directory where LangFlow stores logs, file storage, monitor data, and secret keys.
+- `SILO_DATABASE_URL`: The connection string for the PostgreSQL database.
+- `SILO_CONFIG_DIR`: The directory where Silo stores logs, file storage, monitor data, and secret keys.
 
 Volumes:
 
-- `langflow-data`: This volume is mapped to `/var/lib/langflow` in the container.
+- `silo-data`: This volume is mapped to `/var/lib/silo` in the container.
 
 ### PostgreSQL Service
 
@@ -58,8 +58,8 @@ Environment variables:
 
 Volumes:
 
-- `langflow-postgres`: This volume is mapped to `/var/lib/postgresql/data` in the container.
+- `silo-postgres`: This volume is mapped to `/var/lib/postgresql/data` in the container.
 
-## Switching to a Specific LangFlow Version
+## Switching to a Specific Silo Version
 
-If you want to use a specific version of LangFlow, you can modify the `image` field under the `langflow` service in the Docker Compose file. For example, to use version 1.0-alpha, change `langflowai/langflow:latest` to `langflowai/langflow:1.0-alpha`.
+If you want to use a specific version of Silo, you can modify the `image` field under the `silo` service in the Docker Compose file. For example, to use version 1.0-alpha, change `dobraalkan/silo:latest` to `dobraalkan/silo:1.0-alpha`.

@@ -1,12 +1,12 @@
 .PHONY: all init format lint build build_frontend install_frontend run_frontend run_backend dev help tests coverage clean_python_cache clean_npm_cache clean_all
 
 # Configurations
-VERSION=$(shell grep "^version" pyproject.toml | sed 's/.*\"\(.*\)\"$$/\1/')
+VERSION=latest
 DOCKERFILE=docker/build_and_push.Dockerfile
 DOCKERFILE_BACKEND=docker/build_and_push_backend.Dockerfile
 DOCKERFILE_FRONTEND=docker/frontend/build_and_push_frontend.Dockerfile
 DOCKER_COMPOSE=docker_example/docker-compose.yml
-PYTHON_REQUIRED=$(shell grep '^python[[:space:]]*=' pyproject.toml | sed -n 's/.*"\([^"]*\)".*/\1/p')
+JAVA_REQUIRED=true
 RED=\033[0;31m
 NC=\033[0m # No Color
 GREEN=\033[0;32m
@@ -16,7 +16,7 @@ host ?= 0.0.0.0
 port ?= 7860
 env ?= .env
 open_browser ?= true
-path = src/backend/base/langflow/frontend
+path = src/frontend
 workers ?= 1
 async ?= true
 all: help
@@ -26,27 +26,26 @@ all: help
 ######################
 
 # increment the patch version of the current package
-patch: ## bump the version in langflow and langflow-base
+patch: ## bump the version in silo and silo-base
 	@echo 'Patching the version'
 	@poetry version patch
-	@echo 'Patching the version in langflow-base'
-	@cd src/backend/base && poetry version patch
+	@echo 'Patching the version in silo-base'
+	@cd src/backend && poetry version patch
 	@make lock
 
 # check for required tools
 check_tools:
-	@command -v uv >/dev/null 2>&1 || { echo >&2 "$(RED)uv is not installed. Aborting.$(NC)"; exit 1; }
+	@command -v mvn >/dev/null 2>&1 || { echo >&2 "$(RED)uv is not installed. Aborting.$(NC)"; exit 1; }
 	@command -v npm >/dev/null 2>&1 || { echo >&2 "$(RED)NPM is not installed. Aborting.$(NC)"; exit 1; }
-	@command -v pipx >/dev/null 2>&1 || { echo >&2 "$(RED)pipx is not installed. Aborting.$(NC)"; exit 1; }
 	@$(MAKE) check_env
 	@echo "$(GREEN)All required tools are installed.$(NC)"
 
-# check if Python version is compatible
-check_env: ## check if Python version is compatible
+# check if Java version is compatible
+check_env: ## check if Java version is compatible
 	@chmod +x scripts/setup/check_env.sh
 	@PYTHON_INSTALLED=$$(scripts/setup/check_env.sh python --version 2>&1 | awk '{print $$2}'); \
-	if ! scripts/setup/check_env.sh python -c "import sys; from packaging.specifiers import SpecifierSet; from packaging.version import Version; sys.exit(not SpecifierSet('$(PYTHON_REQUIRED)').contains(Version('$$PYTHON_INSTALLED')))" 2>/dev/null; then \
-		echo "$(RED)Error: Python version $$PYTHON_INSTALLED is not compatible with the required version $(PYTHON_REQUIRED). Aborting.$(NC)"; exit 1; \
+	if ! scripts/setup/check_env.sh python -c "import sys; from packaging.specifiers import SpecifierSet; from packaging.version import Version; sys.exit(not SpecifierSet('$(JAVA_REQUIRED)').contains(Version('$$PYTHON_INSTALLED')))" 2>/dev/null; then \
+		echo "$(RED)Error: Python version $$PYTHON_INSTALLED is not compatible with the required version $(JAVA_REQUIRED). Aborting.$(NC)"; exit 1; \
 	fi
 
 help: ## show this help message
