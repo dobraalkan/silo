@@ -23,5 +23,8 @@
 hs_err_pid*
 replay_pid*
 
-# Exclude Target folders
+# Ignore Target folders
 src/backend/*/target/*
+
+# Ignore vscode settings
+.vscode/settings.json
