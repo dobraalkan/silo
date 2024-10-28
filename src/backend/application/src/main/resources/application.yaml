@@ -32,15 +32,15 @@ spring:
     # driver-class-name:
     url: jdbc:postgresql://localhost:5432/siloDb
     username: siloUser
-    password: 0P0lacam
+    password: 0P0lacam!
 
   # JPA Configuration
   jpa:
     database-platform: org.hibernate.dialect.SQLServerDialect
-    generate-ddl: false
+    generate-ddl: true
     show-sql: true
     hibernate:
-      ddl-auto: validate  
+      ddl-auto: ddl-auto  
     properties:
       hibernate:
         boot:
