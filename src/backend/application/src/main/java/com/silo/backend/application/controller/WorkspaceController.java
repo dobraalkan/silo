@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.silo.backend.domain.model.entity.Workspace;
 import com.silo.backend.service.WorkspaceService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * REST controller for managing {@link Workspace}.
@@ -27,15 +30,12 @@ import jakarta.validation.Valid;
  */
 @RestController
 @RequestMapping("/api/workspace")
+@Tag(name = "Workspace API", description = "Structurizr workspace islemleri")
+@RequiredArgsConstructor
+@Slf4j
 public class WorkspaceController {
 
-    private final Logger log = LoggerFactory.getLogger(WorkspaceController.class);
-	
     private final WorkspaceService entityService;
-
- 	public WorkspaceController (WorkspaceService entityService) {
-		this.entityService = entityService;
-	}
 
     /**
      * {@code POST  /workspace} : Create a new Workspace.

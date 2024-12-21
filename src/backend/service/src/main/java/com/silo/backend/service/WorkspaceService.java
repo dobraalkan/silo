@@ -1,11 +1,14 @@
 package com.silo.backend.service;
 
+import org.springframework.stereotype.Service;
+
 import com.structurizr.Workspace;
 import com.structurizr.model.Container;
 import com.structurizr.model.Model;
 import com.structurizr.model.Person;
 import com.structurizr.model.SoftwareSystem;
 
+@Service
 public class WorkspaceService {
 
     public void generate() {

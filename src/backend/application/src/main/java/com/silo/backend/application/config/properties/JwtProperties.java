@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 import lombok.Getter;
 import lombok.Setter;
 
+@Component
+@ConfigurationProperties(prefix = "jwt")
 @Setter
 @Getter
-@Component
-@ConfigurationProperties("jwt")
 public class JwtProperties {
     private String issuer;
     private String secretKey;

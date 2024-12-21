@@ -30,7 +30,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table (name = "user", uniqueConstraints = {
+@Table (name = "User", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
             "email"
         })
@@ -38,7 +38,7 @@ import lombok.Setter;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     
     @NaturalId
@@ -72,7 +72,7 @@ public class User {
     private AuthProviderEnum provider;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @CollectionTable(name = "User_Role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<RoleEnum> roles;
     

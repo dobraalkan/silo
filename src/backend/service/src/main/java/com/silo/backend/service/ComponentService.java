@@ -31,19 +31,19 @@ public class ComponentService implements CrudService<Component, String> {
 
     @Override
     public void create(Component entity) {
-        // TODO Auto-generated method stub
+      
         throw new UnsupportedOperationException("Unimplemented method 'create'");
     }
 
     @Override
     public void update(Component entity) {
-        // TODO Auto-generated method stub
+     
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
     public void delete(String id) {
-        // TODO Auto-generated method stub
+       
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 }

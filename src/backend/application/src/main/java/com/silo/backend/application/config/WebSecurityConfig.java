@@ -31,20 +31,33 @@ public class WebSecurityConfig {
     private final CustomOAuth2UserService oAuth2UserService;
     private final CookieOAuth2AuthorizationRequestRepository authorizationRequestRepository;
 
+    public static final String[] PUBLIC_URLS = {
+        "/api/auth/**",
+        "/api/user/register",
+        "/v3/api-docs/**",
+        "/swagger-ui/**",
+        "/swagger/**"     
+    };
+
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             //.cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
             .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(request -> request.requestMatchers(""))
+            .authorizeHttpRequests(request -> request
+                .requestMatchers(PUBLIC_URLS).permitAll() // Allow access to public endpoints
+                .requestMatchers("/api/application").hasAuthority("ADMIN")
+                .anyRequest().authenticated() // All other requests need to be authenticated
+                )
             .formLogin(login -> login
                         .usernameParameter("email")
                         .passwordParameter("pwd")
                         .loginPage("/user/login")
                         .failureUrl("/user/login?false")
                         .defaultSuccessUrl("/", true)
-                        .permitAll())
+                        .permitAll()
+            )
             .oauth2Login(configure -> 
                 configure.authorizationEndpoint(config ->
                     config.authorizationRequestRepository(authorizationRequestRepository)
@@ -58,7 +71,7 @@ public class WebSecurityConfig {
                         .logoutUrl("/user/logout")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
-                        .logoutSuccessUrl("user/login")
+                        .logoutSuccessUrl("/user/login")
             )
             .exceptionHandling(exceptionHandling -> exceptionHandling
                 .defaultAuthenticationEntryPointFor(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED), new AntPathRequestMatcher("/api/**"))

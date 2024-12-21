@@ -1,22 +1,40 @@
 # Server Configuration
 server:
-  port: 1020
-
+  port: 3000
 debug: true
 
 spring:
   application:
     name: silo
-  sql:
-    init:
-      mode: never
+
+  # Datasource Configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5434/siloDb
+    username: siloUser
+    password: 0P0lacam!
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size:  5
+
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: none 
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Liquibase configuration
+  liquibase:
+    enabled: true
+    change-log: classpath:database/db.changelog-master.yaml
 
   # MailSender Configuration
   mail:
     host: smtp.google.com
     port: 587
     username: youremail@gmail.com
-    password: your-app-password-from-previous-step (Without spaces or any special character)
+    password: 0P0lacam!
     default-encoding: UTF-8
     properties:
       mail:
@@ -27,27 +45,11 @@ spring:
         mime:
           charset: UTF
 
-  # Datasource Configuration
-  datasource:
-    # driver-class-name:
-    url: jdbc:postgresql://localhost:5432/siloDb
-    username: siloUser
-    password: 0P0lacam!
-
-  # JPA Configuration
-  jpa:
-    database-platform: org.hibernate.dialect.SQLServerDialect
-    generate-ddl: true
-    show-sql: true
-    hibernate:
-      ddl-auto: ddl-auto  
-    properties:
-      hibernate:
-        boot:
-          # allow_jdbc_metadata_access: false
-  
   # Security Configuration
   security:
+    jwt:
+      secret-key: dejavu
+      expiration: 604800
     oauth2:
       client:
         registration: 
@@ -91,7 +93,6 @@ management:
         include: openapi, swagger-ui
 
 # Custom Configuration
-
 hostname: localhost:3000
 mail.debug: false
 recaptcha:
@@ -100,7 +101,7 @@ recaptcha:
 
 jwt: 
   header: Authorization
-  secret: dejavu
+  secret: cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
   expiration: 604800
 
 structurizr:
@@ -108,3 +109,5 @@ structurizr:
     endpoint:
     key:
     secret:
+
+main.liquibase.change-log: classpath:database/db.changelog-master.yaml
