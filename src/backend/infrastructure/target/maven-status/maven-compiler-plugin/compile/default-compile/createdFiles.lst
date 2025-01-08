@@ -1,9 +1,0 @@
-com/silo/backend/infrastructure/CrudService.class
-com/silo/backend/infrastructure/exception/ApiRequestException.class
-com/silo/backend/infrastructure/exception/PasswordConfirmationException.class
-com/silo/backend/infrastructure/exception/InputFieldException.class
-com/silo/backend/infrastructure/exception/EmailException.class
-com/silo/backend/infrastructure/exception/CaptchaException.class
-com/silo/backend/infrastructure/ErrorMessage.class
-com/silo/backend/infrastructure/exception/JwtAuthenticationException.class
-com/silo/backend/infrastructure/exception/PasswordException.class

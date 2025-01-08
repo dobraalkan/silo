@@ -4,27 +4,28 @@ networks:
 services:
   frontend:
     build:
-      context: src/frontend # Path to your React application Dockerfile
+      context: /frontend # Path to your React application Dockerfile
       dockerfile: dev.Dockerfile
       args:
         - BACKEND_URL=http://backend:7860
     depends_on:
-      - backend
+      - backend-command
+      - backend-query
     environment:
       - VITE_PROXY_TARGET=http://backend:7860
     ports:
       - "8080:3000"  # Maps Nginx 80 to localhost 3000
     volumes:
-      - ./src/frontend/public:/home/node/app/public
-      - ./src/frontend/src:/home/node/app/src
-      - ./src/frontend/package.json:/home/node/app/package.json
+      - ./frontend/public:/home/node/app/public
+      - ./frontend/src:/home/node/app/src
+      - ./frontend/package.json:/home/node/app/package.json
     restart: on-failure
     networks:
       - dev-silo
 
-  backend:
+  backend-command:
     build:
-      context: src/backend  # Path to your Spring Boot application Dockerfile
+      context: /command  # Path to your Spring Boot application Dockerfile
       dockerfile: dev.Dockerfile
     environment:
       #JAVA_OPTS: '-Xms100m -Xmx1000m -Xmn100m -Xss256k -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=250m'
@@ -46,6 +47,30 @@ services:
     networks:
       - dev-silo
 
+  backend-query:
+    build:
+      context: /query  # Path to your Spring Boot application Dockerfile
+      dockerfile: dev.Dockerfile
+    environment:
+      #JAVA_OPTS: '-Xms100m -Xmx1000m -Xmn100m -Xss256k -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=250m'
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-database:5432/siloDb
+      SPRING_DATASOURCE_USERNAME: siloUser
+      SPRING_DATASOURCE_PASSWORD: 0P0lacam!
+      # SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      # SPRING_PROFILES_ACTIVE: dev
+    healthcheck:
+      test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
+      interval: 2s
+      timeout: 3s
+      retries: 5
+      start_period: 2s
+    ports:
+      - "3001:4000"
+    depends_on:
+      - mongo-database
+    networks:
+      - dev-silo
+
   postgres-database:
     image: postgres:17
     environment:
@@ -63,6 +88,24 @@ services:
       - dev-silo
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  
+  mongo-database:
+    image: mongo:7.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: siloMongoUser
+      MONGO_INITDB_ROOT_PASSWORD: 0P0lacam!
+    healthcheck:
+      test: ["CMD","mongosh","--eval","'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)'","--quiet"]
+      interval: 10s
+      timeout: 5s
+      retries: 5    
+    ports:
+      - "27017:27017"
+    networks:
+      - dev-silo
+    volumes:
+      - mongo_data:/data/db
 
 volumes:
   postgres_data:
+  mongo_data:
