@@ -31,7 +31,7 @@ services:
       #JAVA_OPTS: '-Xms100m -Xmx1000m -Xmn100m -Xss256k -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=250m'
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-database:5432/siloDb
       SPRING_DATASOURCE_USERNAME: siloUser
-      SPRING_DATASOURCE_PASSWORD: 0P0lacam!
+      SPRING_DATASOURCE_PASSWORD: p4ssw0rd
       # SPRING_JPA_HIBERNATE_DDL_AUTO: update
       # SPRING_PROFILES_ACTIVE: dev
     healthcheck:
@@ -55,7 +55,7 @@ services:
       #JAVA_OPTS: '-Xms100m -Xmx1000m -Xmn100m -Xss256k -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=250m'
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-database:5432/siloDb
       SPRING_DATASOURCE_USERNAME: siloUser
-      SPRING_DATASOURCE_PASSWORD: 0P0lacam!
+      SPRING_DATASOURCE_PASSWORD: p4ssw0rd
       # SPRING_JPA_HIBERNATE_DDL_AUTO: update
       # SPRING_PROFILES_ACTIVE: dev
     healthcheck:
@@ -75,7 +75,7 @@ services:
     image: postgres:17
     environment:
       POSTGRES_USER: siloUser
-      POSTGRES_PASSWORD: 0P0lacam!
+      POSTGRES_PASSWORD: p4ssw0rd
       POSTGRES_DB: siloDb
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d siloDb -U siloUser"]
@@ -93,7 +93,7 @@ services:
     image: mongo:7.0
     environment:
       MONGO_INITDB_ROOT_USERNAME: siloMongoUser
-      MONGO_INITDB_ROOT_PASSWORD: 0P0lacam!
+      MONGO_INITDB_ROOT_PASSWORD: p4ssw0rd
     healthcheck:
       test: ["CMD","mongosh","--eval","'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)'","--quiet"]
       interval: 10s

@@ -263,13 +263,14 @@
 				<artifactId>liquibase-maven-plugin</artifactId>
 				<version>${liquibase.version}</version>
 				<configuration>
-					<searchPath>resources/database</searchPath>
+					<!-- <searchPath>resources/database</searchPath> -->
+					<searchPath>src/main/resources/database</searchPath>
                     <changeLogFile>db.changelog-master.yaml</changeLogFile>
                     <outputChangeLogFile>resources/database/changelog/${maven.build.timestamp}_changelog.yaml</outputChangeLogFile>
                     <diffChangeLogFile>resources/database/changelog/${maven.build.timestamp}_changelog.yaml</diffChangeLogFile>
 					<url>jdbc:postgresql://localhost:5432/siloDb</url>
 					<username>siloUser</username>
-					<password>0P0lacam!</password>
+					<password>p4ssw0rd</password>
 					<referenceUrl>hibernate:spring:com.silo.backend.command.domain.model.entity?dialect=org.hibernate.dialect.PostgreSQLDialect</referenceUrl>
 					<verbose>true</verbose>
 				</configuration>

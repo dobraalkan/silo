@@ -11,7 +11,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5434/siloDb
     username: siloUser
-    password: 0P0lacam!
+    password: p4ssw0rd
     hikari:
       connection-timeout: 20000
       maximum-pool-size:  5
@@ -34,7 +34,7 @@ spring:
     host: smtp.google.com
     port: 587
     username: youremail@gmail.com
-    password: 0P0lacam!
+    password: p4ssw0rd
     default-encoding: UTF-8
     properties:
       mail:

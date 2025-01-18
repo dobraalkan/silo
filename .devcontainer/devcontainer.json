@@ -8,7 +8,7 @@
     "remoteUser": "node",  // Kullanıcı, baz görüntüsüne göre değiştirilebilir
     "remoteEnv": {
         "NODE_ENV": "development",  // Geliştirme ortamı değişkeni
-        "DATABASE_URL": "postgresql://siloDb:0P0lacam!@postgres:5432/siloDb" // PostgreSQL bağlantı dizesi
+        "DATABASE_URL": "postgresql://siloDb:p4ssw0rd@postgres:5432/siloDb" // PostgreSQL bağlantı dizesi
     },
     "overrideCommand": false  // Komutun geçersiz kılınmasını sağlar
 }
