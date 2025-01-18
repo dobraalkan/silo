@@ -4,20 +4,19 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
-import com.silo.backend.command.domain.model.event.DomainEventPublisher;
-import com.silo.backend.command.domain.model.event.DomainEventSubscriber;
-import com.silo.backend.command.domain.model.event.EventStore;
-import com.silo.backend.command.infrastructure.base.DomainEvent;
+import com.silo.backend.command.infrastructure.bus.base.DomainEvent;
+import com.silo.backend.command.infrastructure.event.DomainEventPublisher;
+import com.silo.backend.command.infrastructure.event.DomainEventSubscriber;
+import com.silo.backend.command.infrastructure.event.EventStore;
+
+import lombok.RequiredArgsConstructor;
 
 @Aspect
 @Component
+@RequiredArgsConstructor
 public class AuthenticationEventHandler {
 
-    private EventStore eventStore;
-
-    public AuthenticationEventHandler(EventStore eventStore) {
-        this.eventStore = eventStore;
-    }
+    EventStore eventStore;
 
     @Before(value = "execution(* *(..)) && within(com.tomo.mcauthentication.application..*)")
     public void listen() {

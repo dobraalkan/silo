@@ -1,4 +1,4 @@
-package com.silo.backend.command.infrastructure.base;
+package com.silo.backend.command.infrastructure.bus.base;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;

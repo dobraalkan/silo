@@ -1,7 +1,7 @@
 package com.silo.backend.command.domain.rule;
 
 import com.silo.backend.command.domain.model.entity.user.UserRegistration;
-import com.silo.backend.command.infrastructure.base.BusinessRule;
+import com.silo.backend.command.infrastructure.bus.base.BusinessRule;
 
 public class PasswordRecoveryCodeShouldNotExpired implements BusinessRule {
 

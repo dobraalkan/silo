@@ -8,9 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories (basePackages = "com.silo.backend.command.domain.repository")
+@EnableJpaRepositories (basePackages = "com.silo.backend.command.infrastructure.persistence.jpa")
 @EntityScan (basePackages = "com.silo.backend.command.domain.model.entity")
-@ComponentScan ({"com.silo.backend.command.application.controller","com.silo.backend.service"})
+@ComponentScan ({"com.silo.backend.command.application.controller","com.silo.backend.command.domain.service"})
 @EnableAutoConfiguration
 public class CommandApplication {
 

@@ -2,7 +2,8 @@ package com.silo.backend.command.domain.model.event;
 
 import java.time.LocalDateTime;
 
-import com.silo.backend.command.infrastructure.base.DomainEvent;
+import com.silo.backend.command.infrastructure.bus.base.DomainEvent;
+import com.silo.backend.command.infrastructure.event.EventSerializer;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

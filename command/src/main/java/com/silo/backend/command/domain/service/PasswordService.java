@@ -2,7 +2,7 @@ package com.silo.backend.command.domain.service;
 
 import org.springframework.stereotype.Service;
 
-import com.silo.backend.command.infrastructure.base.BaseService;
+import com.silo.backend.command.infrastructure.bus.base.BaseService;
 
 import java.util.Random;
 

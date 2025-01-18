@@ -3,7 +3,7 @@ package com.silo.backend.command.domain.model.event;
 import java.time.LocalDateTime;
 
 import com.silo.backend.command.domain.model.enums.UserRegistrationStatus;
-import com.silo.backend.command.infrastructure.base.BaseDomainEvent;
+import com.silo.backend.command.infrastructure.bus.base.BaseDomainEvent;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

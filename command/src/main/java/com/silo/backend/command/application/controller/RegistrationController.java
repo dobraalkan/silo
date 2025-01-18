@@ -5,7 +5,8 @@ import com.silo.backend.command.application.recovery.command.CreatePasswordRecov
 import com.silo.backend.command.application.recovery.command.UpdatePasswordWithRecoveryCodeCommand;
 import com.silo.backend.command.application.registration.command.ConfirmUserRegistrationCommand;
 import com.silo.backend.command.application.registration.command.RegisterNewUserCommand;
-import com.silo.backend.command.infrastructure.base.BaseController;
+import com.silo.backend.command.infrastructure.bus.base.BaseController;
+
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
 package com.silo.backend.command.domain.model.entity;
 
-import com.silo.backend.command.infrastructure.base.BaseEntity;
+import com.silo.backend.command.infrastructure.bus.base.BaseEntity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

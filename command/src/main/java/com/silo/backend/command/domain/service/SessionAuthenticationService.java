@@ -3,7 +3,7 @@ package com.silo.backend.command.domain.service;
 import org.springframework.stereotype.Service;
 
 import com.silo.backend.command.domain.model.entity.Session;
-import com.silo.backend.command.infrastructure.base.BaseService;
+import com.silo.backend.command.infrastructure.bus.base.BaseService;
 import com.silo.backend.command.infrastructure.persistence.jpa.SessionRepository;
 import com.silo.backend.command.infrastructure.persistence.jpa.UserRepository;
 

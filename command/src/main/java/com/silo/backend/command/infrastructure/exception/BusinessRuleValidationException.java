@@ -1,6 +1,6 @@
 package com.silo.backend.command.infrastructure.exception;
 
-import com.silo.backend.command.infrastructure.base.BusinessRule;
+import com.silo.backend.command.infrastructure.bus.base.BusinessRule;
 
 import lombok.Getter;
 

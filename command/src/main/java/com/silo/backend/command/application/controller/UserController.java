@@ -4,7 +4,8 @@ import com.silo.backend.command.application.controller.RestApiRoutes.User;
 import com.silo.backend.command.application.users.command.ChangeUserDetailsCommand;
 import com.silo.backend.command.application.users.dto.BaseUserDto;
 import com.silo.backend.command.application.users.query.GetUserQuery;
-import com.silo.backend.command.infrastructure.base.BaseController;
+import com.silo.backend.command.infrastructure.bus.base.BaseController;
+
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 

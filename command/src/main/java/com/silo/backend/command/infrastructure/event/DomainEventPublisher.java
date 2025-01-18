@@ -1,9 +1,9 @@
-package com.silo.backend.command.domain.model.event;
+package com.silo.backend.command.infrastructure.event;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.silo.backend.command.infrastructure.base.DomainEvent;
+import com.silo.backend.command.infrastructure.bus.base.DomainEvent;
 
 public class DomainEventPublisher {
 

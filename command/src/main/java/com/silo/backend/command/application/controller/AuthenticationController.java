@@ -5,7 +5,7 @@ import com.silo.backend.command.application.authentication.command.SocialLoginCo
 import com.silo.backend.command.application.authentication.command.LogoutCommand;
 import com.silo.backend.command.application.controller.RestApiRoutes.AuthRoutes;
 import com.silo.backend.command.application.dto.SessionDto;
-import com.silo.backend.command.infrastructure.base.BaseController;
+import com.silo.backend.command.infrastructure.bus.base.BaseController;
 import com.silo.backend.command.infrastructure.security.CurrentUser;
 import com.silo.backend.command.infrastructure.security.UserAuthPrincipal;
 import org.springframework.http.HttpStatus;

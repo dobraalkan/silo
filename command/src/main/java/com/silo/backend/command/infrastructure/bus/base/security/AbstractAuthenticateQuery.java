@@ -1,4 +1,4 @@
-package com.silo.backend.command.infrastructure.base.security;
+package com.silo.backend.command.infrastructure.bus.base.security;
 
 
 import com.silo.backend.command.infrastructure.domain.query.Query;
@@ -10,6 +10,5 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public abstract class AbstractAuthorizeQuery implements Query {
-
+public abstract class AbstractAuthenticateQuery implements Query {
 }

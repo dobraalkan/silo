@@ -14,4 +14,5 @@ public interface UserMapper {
     BaseUserDto toDto(User entity);
     
     User toEntity(BaseUserDto dto);
+
 } 

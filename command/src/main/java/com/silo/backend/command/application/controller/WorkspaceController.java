@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.silo.backend.command.domain.model.entity.Workspace;
-import com.silo.backend.command.infrastructure.base.BaseController;
+import com.silo.backend.command.infrastructure.bus.base.BaseController;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

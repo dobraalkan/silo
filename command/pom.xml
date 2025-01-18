@@ -37,7 +37,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyy-MM-dd-HH-mm</maven.build.timestamp.format>
 		<openapi.version>2.5.0</openapi.version>
-		<version>4.29.2</version>
+		<liquibase.version>4.30.0</liquibase.version>
 		<lombok.version>1.18.30</lombok.version>
 		<structurizr.version>3.0.0</structurizr.version>
 	</properties>
@@ -101,6 +101,13 @@
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
 			<version>${liquibase.version}</version>
+			<exclusions>
+        		<!-- Alternatively, you can remove this exclusion. -->
+        		<exclusion>
+            		<groupId>org.liquibase</groupId>
+            		<artifactId>liquibase-commercial</artifactId>
+        		</exclusion>
+    		</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -256,14 +263,14 @@
 				<artifactId>liquibase-maven-plugin</artifactId>
 				<version>${liquibase.version}</version>
 				<configuration>
-					<searchPath>database</searchPath>
+					<searchPath>resources/database</searchPath>
                     <changeLogFile>db.changelog-master.yaml</changeLogFile>
-                    <outputChangeLogFile>database/changelog/${maven.build.timestamp}_changelog.yaml</outputChangeLogFile>
-                    <diffChangeLogFile>database/changelog/${maven.build.timestamp}_changelog.yaml</diffChangeLogFile>
-					<url>jdbc:postgresql://localhost:5434/siloDb</url>
+                    <outputChangeLogFile>resources/database/changelog/${maven.build.timestamp}_changelog.yaml</outputChangeLogFile>
+                    <diffChangeLogFile>resources/database/changelog/${maven.build.timestamp}_changelog.yaml</diffChangeLogFile>
+					<url>jdbc:postgresql://localhost:5432/siloDb</url>
 					<username>siloUser</username>
 					<password>0P0lacam!</password>
-					<referenceUrl>hibernate:spring:com.silo.backend.domain.model.entity?dialect=org.hibernate.dialect.PostgreSQLDialect</referenceUrl>
+					<referenceUrl>hibernate:spring:com.silo.backend.command.domain.model.entity?dialect=org.hibernate.dialect.PostgreSQLDialect</referenceUrl>
 					<verbose>true</verbose>
 				</configuration>
 				<dependencies>

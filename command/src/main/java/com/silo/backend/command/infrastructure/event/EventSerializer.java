@@ -1,6 +1,6 @@
-package com.silo.backend.command.domain.model.event;
+package com.silo.backend.command.infrastructure.event;
 
-import com.silo.backend.command.infrastructure.base.DomainEvent;
+import com.silo.backend.command.infrastructure.bus.base.DomainEvent;
 import com.silo.backend.command.infrastructure.serializer.AbstractSerializer;
 
 public class EventSerializer extends AbstractSerializer {

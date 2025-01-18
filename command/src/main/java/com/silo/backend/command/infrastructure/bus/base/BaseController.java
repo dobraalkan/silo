@@ -1,12 +1,12 @@
-package com.silo.backend.command.infrastructure.base;
+package com.silo.backend.command.infrastructure.bus.base;
 
 import org.springframework.util.StringUtils;
 
 import com.silo.backend.command.application.dto.Response;
 import com.silo.backend.command.domain.service.TokenProvider;
-import com.silo.backend.command.infrastructure.base.security.Authenticate;
 import com.silo.backend.command.infrastructure.bus.CommandBus;
 import com.silo.backend.command.infrastructure.bus.QueryBus;
+import com.silo.backend.command.infrastructure.bus.base.security.Authenticate;
 import com.silo.backend.command.infrastructure.config.AppProperties;
 import com.silo.backend.command.infrastructure.domain.Request;
 import com.silo.backend.command.infrastructure.domain.command.Command;

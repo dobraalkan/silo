@@ -2,7 +2,7 @@ package com.silo.backend.command.domain.rule;
 
 import java.time.LocalDateTime;
 
-import com.silo.backend.command.infrastructure.base.BusinessRule;
+import com.silo.backend.command.infrastructure.bus.base.BusinessRule;
 
 public class UserRegistrationCannotBeConfirmedAfterExpiration implements BusinessRule {
 

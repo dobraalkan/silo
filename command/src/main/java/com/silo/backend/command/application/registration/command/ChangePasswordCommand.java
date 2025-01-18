@@ -1,6 +1,7 @@
 package com.silo.backend.command.application.registration.command;
 
 import com.silo.backend.command.infrastructure.domain.command.Command;
+
 import jakarta.validation.constraints.NotNull;
 
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.silo.backend.command.infrastructure.base.security;
+package com.silo.backend.command.infrastructure.bus.base.security;
 
 import java.util.List;
 

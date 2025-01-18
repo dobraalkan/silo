@@ -1,6 +1,6 @@
 package com.silo.backend.command.domain.rule;
 
-import com.silo.backend.command.infrastructure.base.BusinessRule;
+import com.silo.backend.command.infrastructure.bus.base.BusinessRule;
 import com.silo.backend.command.infrastructure.persistence.jpa.UserRepository;
 
 public class UserEmailMustBeUnique implements BusinessRule {

@@ -1,4 +1,4 @@
-package com.silo.backend.command.domain.model.event;
+package com.silo.backend.command.infrastructure.event;
 
 public interface DomainEventSubscriber<T> {
 

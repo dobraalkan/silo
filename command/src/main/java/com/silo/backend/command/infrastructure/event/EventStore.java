@@ -1,8 +1,9 @@
-package com.silo.backend.command.domain.model.event;
+package com.silo.backend.command.infrastructure.event;
 
 import java.util.List;
 
-import com.silo.backend.command.infrastructure.base.DomainEvent;
+import com.silo.backend.command.domain.model.event.StoredEvent;
+import com.silo.backend.command.infrastructure.bus.base.DomainEvent;
 
 public interface EventStore {
 
