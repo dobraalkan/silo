@@ -1,4 +1,4 @@
-package com.silo.backend.command.infrastructure.service;
+package com.silo.backend.command.domain.service;
 
 import org.springframework.stereotype.Service;
 

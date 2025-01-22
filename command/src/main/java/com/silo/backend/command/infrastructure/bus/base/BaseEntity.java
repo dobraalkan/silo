@@ -1,6 +1,7 @@
 package com.silo.backend.command.infrastructure.bus.base;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

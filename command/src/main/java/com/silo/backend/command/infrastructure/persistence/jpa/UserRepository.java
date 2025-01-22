@@ -9,6 +9,6 @@ import com.silo.backend.command.domain.model.entity.user.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, UUID> {
 
-    UUID nextIdentity();
+    //UUID nextIdentity();
     User findByEmail(String anEmail);
 }

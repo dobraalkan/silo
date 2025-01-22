@@ -1,0 +1,15 @@
+contexts: ${liquibase.contexts}
+changeLogFile: src/main/resources/db/db.changelog-master.yaml
+
+driver: org.postgresql.Driver
+url: jdbc:postgresql://localhost:5432/siloDb
+   
+username: siloUser
+password: p4ssw0rd
+
+referenceUrl: hibernate:spring:com.silo.backend.command.domain.model.entity?dialect=org.hibernate.dialect.PostgreSQLDialect
+outputChangeLogFile: src/main/resources/db/changelog/${maven.build.timestamp}_changelog.yaml
+diffChangeLogFile: src/main/resources/db/changelog/${maven.build.timestamp}_changelog.yaml
+
+verbose: true
+dropFirst: false

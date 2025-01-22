@@ -29,10 +29,12 @@ public class ConfirmUserRegistrationCommandHandler implements CommandHandler<Con
             );
         }
 
-        User user = userRegistration.createUser(userRepository);
-        userRegistration.setUserId(user.getUserId());
+        User user = new User(userRegistration.getFirstName(), userRegistration.getLastName(), userRegistration.getEmail(), User.AuthProvider.EMAIL);
+        //userRegistration.createUser(userRepository);
 
         userRepository.save(user);
+        
+        userRegistration.setUserId(user.getUserId());
         userRegistrationRepository.save(userRegistration);
         return null;
     }

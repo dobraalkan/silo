@@ -37,7 +37,6 @@ public class OAuth2Service {
 
     protected User authenticateAndRegister(OAuth2Principal principal) {
        User user = new User(
-                userRespository.nextIdentity(),
                 principal.getFirstName(),
                 principal.getLastName(),
                 principal.getEmail(),

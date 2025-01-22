@@ -22,7 +22,6 @@ public class EmailLoginCommandHandler extends BaseLoginCommandHandler implements
     public SessionDto handle(EmailLoginCommand command) {
         User user = authenticationService.authenticate(command.getEmail(), command.getPassword());
         Session session = new Session(
-                sessionRepository.nextIdentity(),
                 user, tokenProvider,
                 command.getRememberMe(),
                 command.getUserAgent(), command.getIpAddress());

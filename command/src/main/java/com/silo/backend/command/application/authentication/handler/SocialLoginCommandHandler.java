@@ -30,7 +30,6 @@ public class SocialLoginCommandHandler extends BaseLoginCommandHandler implement
         User user = oAuth2Service.registerAuthenticate(command.getAccessCode());
 
         Session session = new Session(
-                sessionRepository.nextIdentity(),
                 user, tokenProvider,
                 command.getRememberMe(),
                 command.getUserAgent(), command.getIpAddress());

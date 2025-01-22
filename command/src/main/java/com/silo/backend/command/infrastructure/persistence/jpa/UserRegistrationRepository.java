@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository
 public interface UserRegistrationRepository extends CrudRepository <UserRegistration, Long> {
 
-    UUID nextIdentity();
+    //UUID nextIdentity();
     
     long countByEmail(String email);
 

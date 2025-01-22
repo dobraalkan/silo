@@ -11,7 +11,6 @@ import com.silo.backend.command.domain.model.entity.user.UserRegistration;
 import com.silo.backend.command.infrastructure.bus.base.BaseService;
 import com.silo.backend.command.infrastructure.persistence.jpa.UserRegistrationRepository;
 import com.silo.backend.command.infrastructure.persistence.jpa.UserRepository;
-import com.silo.backend.command.infrastructure.service.EncryptionService;
 
 import lombok.RequiredArgsConstructor;
 

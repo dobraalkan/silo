@@ -13,6 +13,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +28,8 @@ public class Session {
 
     public static Long EXPIRATION_MSEC = 15000L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID sessionId;
     private String accessToken;
     private LocalDateTime expirationDate;
@@ -39,9 +44,8 @@ public class Session {
     @AttributeOverride(name="id", column=@Column(name="user_id"))
     private UUID userId;
 
-    public Session(UUID sessionId, User user, TokenProvider tokenProvider, Boolean rememberMe, String userAgent, String ipAddress)
+    public Session(User user, TokenProvider tokenProvider, Boolean rememberMe, String userAgent, String ipAddress)
     {
-        this.sessionId = sessionId;
         this.ipAddress = ipAddress;
         this.userAgent = userAgent;
         this.tokenType = tokenProvider.getTokenType();

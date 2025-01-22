@@ -6,9 +6,9 @@ import com.silo.backend.command.application.dto.Voidy;
 import com.silo.backend.command.application.registration.command.ChangePasswordCommand;
 import com.silo.backend.command.domain.model.entity.Session;
 import com.silo.backend.command.domain.model.entity.user.UserRegistration;
+import com.silo.backend.command.domain.service.EncryptionService;
 import com.silo.backend.command.domain.service.SessionAuthenticationService;
 import com.silo.backend.command.infrastructure.persistence.jpa.UserRegistrationRepository;
-import com.silo.backend.command.infrastructure.service.EncryptionService;
 import com.silo.backend.command.infrastructure.service.command.CommandHandler;
 
 import lombok.RequiredArgsConstructor;

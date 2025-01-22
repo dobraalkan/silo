@@ -9,18 +9,15 @@ import com.silo.backend.command.domain.model.entity.OAuth2Principal;
 import com.silo.backend.command.infrastructure.http.oauth2.user.OAuth2UserInfo;
 import com.silo.backend.command.infrastructure.http.oauth2.user.OAuth2UserInfoFactory;
 
+import lombok.RequiredArgsConstructor;
+
 import java.time.Instant;
 
+@RequiredArgsConstructor
 public abstract class AbstractOAuth2Authentication {
 
         ClientRegistration clientRegistration;
         CustomOAuth2UserService customOAuth2UserService;
-
-        public AbstractOAuth2Authentication(ClientRegistration clientRegistration,
-                        CustomOAuth2UserService customOAuth2UserService) {
-                this.clientRegistration = clientRegistration;
-                this.customOAuth2UserService = customOAuth2UserService;
-        }
 
         protected OAuth2Principal authenticateUser(String anAccessCode) {
                 OAuth2UserRequest oAuth2UserRequest = new OAuth2UserRequest(clientRegistration, new OAuth2AccessToken(

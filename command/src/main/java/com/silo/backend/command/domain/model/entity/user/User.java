@@ -30,13 +30,11 @@ public class User {
     AuthProvider provider;
 
     public User(
-            UUID anId,
             String aFirstName,
             String aLastName,
             String anEmail,
             AuthProvider aProvider) {
         //this.checkRule(DomainRegistry.userEmailMustBeUnique(anEmail));
-        this.userId = anId;
         this.firstName = aFirstName;
         this.lastName = aLastName;
         this.email = anEmail;

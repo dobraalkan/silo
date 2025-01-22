@@ -48,14 +48,14 @@ public class UserRegistration {
         this.setPassword(this.asEncryptedValue(aChangedPassword)); */
     }
 
-    public User createUser(UserRepository userRespository) {
+/*     public User createUser(UserRepository userRespository) {
         this.setStatus(UserRegistrationStatus.Confirmed);
 
         UUID userId = userRespository.nextIdentity();
         this.setUserId(userId);
 
         return new User(userId, getFirstName(), getLastName(), getEmail(), User.AuthProvider.EMAIL);
-    }
+    } */
 
     public boolean isRecoveryCodeUnexpired() {
         return recoveryCodeExpirationDate != null && recoveryCodeExpirationDate.isAfter(LocalDateTime.now());

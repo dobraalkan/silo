@@ -31,7 +31,6 @@ public class SessionAuthenticationService extends BaseService {
 
         if (session.isExpired()) {
             return new Session(
-                    sessionRepository.nextIdentity(),
                     userRepository.findById(session.getUserId()).get(),
                     tokenProvider,
                     true,

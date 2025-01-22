@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface SessionRepository extends CrudRepository<Session, UUID> {
 
-    UUID nextIdentity();
+    //UUID nextIdentity();
 
     List<Session> findByUserId(UUID userId);
 

@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class GoogleOAuth2Authentication extends AbstractOAuth2Authentication implements OAuth2Authentication {
 
-    public GoogleOAuth2Authentication(
+/*     public GoogleOAuth2Authentication(
             @Qualifier("googleClientRegistration") 
             ClientRegistration clientRegistration,
             CustomOAuth2UserService customOAuth2UserService) {
         super(clientRegistration, customOAuth2UserService);
-    }
+    } */
 
     @Override
     public OAuth2Principal authenticate(String anAccessCode) {
