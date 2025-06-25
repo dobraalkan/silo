@@ -1,17 +1,35 @@
-FROM mcr.microsoft.com/devcontainers/java:1-21-bullseye
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
-ARG INSTALL_MAVEN="true"
-ARG MAVEN_VERSION=""
+# Set timezone
+ENV TZ=UTC
 
-ARG INSTALL_GRADLE="false"
-ARG GRADLE_VERSION=""
+# Set up work directory
+WORKDIR /workspace
 
-RUN if [ "${INSTALL_MAVEN}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install maven \"${MAVEN_VERSION}\""; fi \
-    && if [ "${INSTALL_GRADLE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install gradle \"${GRADLE_VERSION}\""; fi
+# Install additional dev dependencies
+RUN apt-get update && apt-get install -y \
+    zsh \
+    curl \
+    git \
+    build-essential \
+    npm \
+    lsof \
+    procps \
+    vim \
+    less \
+    net-tools \
+    sudo \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+# Create the vscode user and group with the expected UID and GID (1000)
+RUN groupadd -g 1000 langflow && \
+    useradd -m -u 1000 -g 1000 -s /bin/zsh langflow && \
+    echo "langflow ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# [Optional] Uncomment this line to install global node packages.
-# RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
+# Set default shell to Zsh
+SHELL ["/bin/zsh", "-c"]
+
+RUN echo 'export PS1="%~ %# "' >> /home/langflow/.zshrc
+
+# Set the default user
+USER langflow

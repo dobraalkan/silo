@@ -67,7 +67,7 @@ services:
         - traefik.http.routers.${STACK_NAME?Variable not set}-proxy-http.middlewares=${STACK_NAME?Variable not set}-www-redirect,${STACK_NAME?Variable not set}-https-redirect
 
   backend: &backend
-    image: "silo/silo-backend:latest"
+    image: "langflowai/langflow-backend:latest"
     depends_on:
       - db
       - broker
@@ -80,11 +80,11 @@ services:
       labels:
         - traefik.enable=true
         - traefik.constraint-label-stack=${TRAEFIK_TAG?Variable not set}
-        - traefik.http.routers.${STACK_NAME?Variable not set}-backend-http.rule=PathPrefix(`/api/v1`) || PathPrefix(`/docs`) || PathPrefix(`/health`)
+        - traefik.http.routers.${STACK_NAME?Variable not set}-backend-http.rule=PathPrefix(`/api/v1`) || PathPrefix(`/api/v2`) || PathPrefix(`/docs`) || PathPrefix(`/health`)
         - traefik.http.services.${STACK_NAME?Variable not set}-backend.loadbalancer.server.port=7860
 
   db:
-    image: postgres:16
+    image: postgres:15.4
     volumes:
       - app-db-data:/var/lib/postgresql/data/pgdata
     environment:
@@ -165,7 +165,7 @@ services:
         - traefik.http.services.${STACK_NAME?Variable not set}-flower.loadbalancer.server.port=5555
 
   frontend:
-    image: "silo/silo-frontend:latest"
+    image: "langflowai/langflow-frontend:latest"
     env_file:
       - .env
     restart: on-failure

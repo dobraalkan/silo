@@ -1,9 +1,9 @@
 .venv/
+**/aws
 node_modules
 **/node_modules/
 dist/
 **/build/
-src/frontend
-src/backend
-**/silo-pre.db
-**/silo.db
+src/backend/langflow/frontend
+**/langflow-pre.db
+**/langflow.db
